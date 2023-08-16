@@ -1,5 +1,5 @@
-import { dataService } from '../services/data.service.local'
-// import { dataService } from '../services/data.service'
+import { entityService } from '../services/entity.service.local'
+// import { entityService } from '../services/entity.service'
 
 export function getActionRemoveData(dataId) {
     return {
@@ -7,16 +7,16 @@ export function getActionRemoveData(dataId) {
         dataId
     }
 }
-export function getActionAddData(data) {
+export function getActionAddData(entity) {
     return {
         type: 'addData',
-        data
+        entity
     }
 }
-export function getActionUpdateData(data) {
+export function getActionUpdateData(entity) {
     return {
         type: 'updateData',
-        data
+        entity
     }
 }
 export function getActionAddDataMsg(dataId) {
@@ -29,56 +29,56 @@ export function getActionAddDataMsg(dataId) {
 
 export const dataStore = {
     state: {
-        datas: []
+        entities: []
     },
     getters: {
-        datas({datas}) { return datas },
+        entities({entities}) { return entities },
     },
     mutations: {
-        setDatas(state, { datas }) {
-            state.datas = datas
+        setDatas(state, { entities }) {
+            state.entities = entities
         },
-        addData(state, { data }) {
-            state.datas.push(data)
+        addData(state, { entity }) {
+            state.entities.push(entity)
         },
-        updateData(state, { data }) {
-            const idx = state.datas.findIndex(c => c._id === data._id)
-            state.datas.splice(idx, 1, data)
+        updateData(state, { entity }) {
+            const idx = state.entities.findIndex(c => c._id === entity._id)
+            state.entities.splice(idx, 1, entity)
         },
         removeData(state, { dataId }) {
-            state.datas = state.datas.filter(data => data._id !== dataId)
+            state.entities = state.entities.filter(entity => entity._id !== dataId)
         },
         addDataMsg(state, { dataId , msg}) {
-            const data = state.datas.find(data => data._id === dataId)
-            if (!data.msgs) data.msgs = []
-            data.msgs.push(msg)
+            const entity = state.entities.find(entity => entity._id === dataId)
+            if (!entity.msgs) entity.msgs = []
+            entity.msgs.push(msg)
         },
     },
     actions: {
-        async addData(context, { data }) {
+        async addData(context, { entity }) {
             try {
-                data = await dataService.save(data)
-                context.commit(getActionAddData(data))
-                return data
+                entity = await entityService.save(entity)
+                context.commit(getActionAddData(entity))
+                return entity
             } catch (err) {
                 console.log('dataStore: Error in addData', err)
                 throw err
             }
         },
-        async updateData(context, { data }) {
+        async updateData(context, { entity }) {
             try {
-                data = await dataService.save(data)
-                context.commit(getActionUpdateData(data))
-                return data
+                entity = await entityService.save(entity)
+                context.commit(getActionUpdateData(entity))
+                return entity
             } catch (err) {
                 console.log('dataStore: Error in updateData', err)
                 throw err
             }
         },
-        async loadDatas(context) {
+        async loadEntities(context) {
             try {
-                const datas = await dataService.query()
-                context.commit({ type: 'setDatas', datas })
+                const entities = await entityService.query()
+                context.commit({ type: 'setDatas', entities })
             } catch (err) {
                 console.log('dataStore: Error in loadDatas', err)
                 throw err
@@ -86,7 +86,7 @@ export const dataStore = {
         },
         async removeData(context, { dataId }) {
             try {
-                await dataService.remove(dataId)
+                await entityService.remove(dataId)
                 context.commit(getActionRemoveData(dataId))
             } catch (err) {
                 console.log('dataStore: Error in removeData', err)
@@ -95,7 +95,7 @@ export const dataStore = {
         },
         async addDataMsg(context, { dataId, txt }) {
             try {
-                const msg = await dataService.addDataMsg(dataId, txt)
+                const msg = await entityService.addDataMsg(dataId, txt)
                 context.commit({type: 'addDataMsg', dataId, msg })
             } catch (err) {
                 console.log('dataStore: Error in addDataMsg', err)

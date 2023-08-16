@@ -1,6 +1,5 @@
 <template>
   <AppHeader />
-  <Charts /> 
   <SideNav/>
   <section class="container home text-center">
     <DataList />
@@ -24,8 +23,10 @@ export default {
   computed: {
   },
   created() {
+    this.$store.dispatch({type: 'loadEntities'})
   },
   methods: {
+    
   },
   components: {
     AppHeader,
