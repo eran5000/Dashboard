@@ -1,4 +1,5 @@
 <template>
+  <SideNav/>
   <AppHeader /> 
   <section class="container home text-center">
     <DashboardList />
@@ -11,6 +12,7 @@
 import AppHeader from '../cmps/AppHeader.vue';
 import DashboardList from '../cmps/DashboardList.vue';
 import Charts from '../cmps/Charts.vue';
+import SideNav from '../cmps/SideNav.vue';
 
 export default {
   name: 'Dashboard',
@@ -27,7 +29,8 @@ export default {
   components: {
     AppHeader,
     DashboardList,
-    Charts
+    Charts,
+    SideNav
   },
   
 }

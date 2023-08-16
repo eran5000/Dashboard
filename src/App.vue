@@ -1,7 +1,6 @@
 <template>
-  <section>
+  <section class="main-layout">
     <RouterView />
-    <UserMsg/>
   </section>
 </template>
 
