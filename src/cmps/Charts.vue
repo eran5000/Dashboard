@@ -42,13 +42,34 @@ export default {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                labels: false
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                    enabled: true, // Enable tooltips
+                    callbacks: {
+                        label: (tooltipItem, data) => {
+                            console.log(tooltipItem)
+                            const dataset = data.datasets[tooltipItem.datasetIndex]
+                            const currentValue = dataset.data[tooltipItem.index]
+                            return currentValue.toString()
+                        }
+                    }
+                }
+                },
+                elements: {
+                    point: {
+                        pointStyle: 'line',
+                        radius: 0, // Set the radius to 0 to hide dots
+                    }
+                }
             }
         }
     },
     components: {
         Line
-    },
+    }
 
 }
 </script>
