@@ -1,14 +1,14 @@
 <template>
     <section class="dashboard-list">
-        <DashboardPreview />
+        <DataPreview />
     </section>
 </template>
 <script>
-import DashboardPreview from './DashboardPreview.vue';
+import DataPreview from './DataPreview.vue';
 
 export default {
     components: {
-        DashboardPreview
+       DataPreview
     }
 }
 </script>
