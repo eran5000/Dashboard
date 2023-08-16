@@ -29,7 +29,7 @@ export default {
   },
   components: {
     AppHeader,
-    DashboardList,
+    DataList,
     Charts,
     SideNav
   },
