@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { data, data as gData } from '../../data/data.js'
 
 const STORAGE_KEY = 'data'
 
@@ -18,6 +19,10 @@ window.cs = dataService
 
 async function query(filterBy = { txt: '', price: 0 }) {
     var datas = await storageService.query(STORAGE_KEY)
+    if (!datas) {
+        utilService.saveToStorage(STORAGE_KEY,gData)
+        datas = gData
+    }
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         datas = datas.filter(data => regex.test(data.vendor) || regex.test(data.description))

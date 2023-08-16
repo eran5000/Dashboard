@@ -1,5 +1,6 @@
 <template>
-  <AppHeader /> 
+  <AppHeader />
+  <Charts /> 
   <section class="container home text-center">
     <DataList />
   </section>
