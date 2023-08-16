@@ -2,7 +2,7 @@
   <SideNav/>
   <AppHeader /> 
   <section class="container home text-center">
-    <DashboardList />
+    <DataList />
   </section>
 
   
@@ -10,7 +10,7 @@
 
 <script>
 import AppHeader from '../cmps/AppHeader.vue';
-import DashboardList from '../cmps/DashboardList.vue';
+import DataList from '../cmps/DataList.vue';
 import Charts from '../cmps/Charts.vue';
 import SideNav from '../cmps/SideNav.vue';
 
