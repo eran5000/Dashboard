@@ -1,4 +1,4 @@
-export const data = [
+export const entity = [
   {
     "date": 1679743932000,
     "payment": 1857.8,

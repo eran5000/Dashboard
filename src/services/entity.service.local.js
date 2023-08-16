@@ -2,11 +2,11 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { data, data as gData } from '../../data/data.js'
+import {  entity as gData } from '../../data/entity.js'
 
-const STORAGE_KEY = 'data'
+const STORAGE_KEY = 'entity'
 
-export const dataService = {
+export const entityService = {
     query,
     getById,
     save,
@@ -14,23 +14,23 @@ export const dataService = {
     getEmptyData,
     addDataMsg
 }
-window.cs = dataService
+window.cs = entityService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    var datas = await storageService.query(STORAGE_KEY)
-    if (!datas) {
+    var entities = await storageService.query(STORAGE_KEY)
+    if (!entities) {
         utilService.saveToStorage(STORAGE_KEY,gData)
-        datas = gData
+        entities = gData
     }
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
-        datas = datas.filter(data => regex.test(data.vendor) || regex.test(data.description))
+        entities = entities.filter(entity => regex.test(entity.vendor) || regex.test(entity.description))
     }
     if (filterBy.price) {
-        datas = datas.filter(data => data.price <= filterBy.price)
+        entities = entities.filter(entity => entity.price <= filterBy.price)
     }
-    return datas
+    return entities
 }
 
 function getById(dataId) {
@@ -41,30 +41,30 @@ async function remove(dataId) {
     await storageService.remove(STORAGE_KEY, dataId)
 }
 
-async function save(data) {
+async function save(entity) {
     var savedData
-    if (data._id) {
-        savedData = await storageService.put(STORAGE_KEY, data)
+    if (entity._id) {
+        savedData = await storageService.put(STORAGE_KEY, entity)
     } else {
         // Later, owner is set by the backend
-        data.owner = userService.getLoggedinUser()
-        savedData = await storageService.post(STORAGE_KEY, data)
+        entity.owner = userService.getLoggedinUser()
+        savedData = await storageService.post(STORAGE_KEY, entity)
     }
     return savedData
 }
 
 async function addDataMsg(dataId, txt) {
     // Later, this is all done by the backend
-    const data = await getById(dataId)
-    if (!data.msgs) data.msgs = []
+    const entity = await getById(dataId)
+    if (!entity.msgs) entity.msgs = []
 
     const msg = {
         id: utilService.makeId(),
         by: userService.getLoggedinUser(),
         txt
     }
-    data.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, data)
+    entity.msgs.push(msg)
+    await storageService.put(STORAGE_KEY, entity)
 
     return msg
 }
@@ -77,7 +77,7 @@ function getEmptyData() {
 }
 
 
-// Initial data
+// Initial entity
 // ;(async ()=>{
 //     await storageService.post(STORAGE_KEY, {vendor: 'Subali Karov 1', price: 180})
 //     await storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 240})
