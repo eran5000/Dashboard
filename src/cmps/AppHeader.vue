@@ -1,14 +1,15 @@
 <template>
   <header class="app-header">
     <AppFilter />
-    <el-tooltip content="Last data update was on 17-8-2023 about 7 hours ago" placement="bottom" effect="light">
+    <el-tooltip popper-class="bell-popper" content="Last data update was on 17-8-2023 about 7 hours ago"
+      placement="bottom" effect="light">
       <i class="fa-regular fa-bell fa-lg"></i>
     </el-tooltip>
 
     <div class="user-actions">
       <p>MAX - Publisher</p>
       <p>John Don</p>
-      <el-popover placement="bottom" :width="200" trigger="click">
+      <el-popover popper-class="user-popper" placement="bottom" :width="200" trigger="click">
         <template #reference>
           <i class="fa-regular fa-user fa-lg"></i>
         </template>
