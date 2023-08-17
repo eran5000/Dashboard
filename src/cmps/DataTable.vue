@@ -1,26 +1,24 @@
 <template>
   <section class="table-container">
-    <TableHeader/>
-    <DataList/>
-    <TableSummary/>
-      <!-- <DataPreview v-for="entity in entities" :key="entity.date"/> -->
-      <pre>{{ entities }}</pre>
+    <TableHeader />
+    <DataList :entities="entities" />
+    <TableSummary />
   </section>
 </template>
 <script>
-import DataPreview from './DataPreview.vue';
-import TableHeader from './TableHeader.vue';
-import TableSummary from './TableSummary.vue';
+import DataList from './DataList.vue'
+import TableHeader from './TableHeader.vue'
+import TableSummary from './TableSummary.vue'
 
 export default {
   name: 'DataTable',
   props: {
-      entities: {type: Array}
+    entities: { type: Array },
   },
   components: {
-     DataPreview,
-     TableHeader,
-     TableSummary
-  }
+    DataList,
+    TableHeader,
+    TableSummary,
+  },
 }
 </script>
