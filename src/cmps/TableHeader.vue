@@ -18,7 +18,7 @@ export default {
       headers: [
         {
           title: 'Date',
-          sortable: false,
+          sortable: true,
           sortKey: 'date',
           dir: 1
 
