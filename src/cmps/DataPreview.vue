@@ -1,5 +1,5 @@
 <template>
-    <section class="data-preview">
+    <section class="data-preview table-grid">
         <p>{{ date }}</p>
         <p>{{ payment }}</p>
         <p>{{ entity.searches }} K</p>
