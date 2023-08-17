@@ -19,7 +19,7 @@ window.cs = entityService
 
 async function query(filterBy = { txt: '', price: 0 }) {
     var entities = await storageService.query(STORAGE_KEY)
-    if (!entities) {
+    if (!entities || !entities.length) {
         utilService.saveToStorage(STORAGE_KEY,gData)
         entities = gData
     }
