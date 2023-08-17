@@ -15,7 +15,7 @@ ChartJS.register(
 )
 
 export default {
-    props:{
+    props: {
         labels: Array,
         dataSet: Array,
         label: String
@@ -75,11 +75,11 @@ export default {
                         }
                     }
                 }
-            }
+            },
         }
     },
     created() {
-        this.data.datasets[0].label = this.labels
+        this.data.datasets[0].label = this.label
         this.data.datasets[0].data = this.dataSet
         this.data.labels = this.labels
     },
