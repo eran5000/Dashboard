@@ -1,12 +1,10 @@
 <template>
   <AppHeader />
-  <SideNav/>
+  <SideNav />
   <section class="content-container">
     <Charts />
-    <DataTable :entities="entities"/>
+    <DataTable @sort="sortEntities" :entities="entities" />
   </section>
-
-  
 </template>
 
 <script>
@@ -22,7 +20,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch({type: 'loadEntities'})
+    this.$store.dispatch({ type: 'loadEntities' })
   },
   computed: {
     entities() {
@@ -30,7 +28,11 @@ export default {
     }
   },
   methods: {
-    
+    sortEntities({ key, dir }) {
+      console.debug('♠️ ~ file: Dashboard.vue:32 ~ sortEntities ~ sortKey, dir:', key, dir)
+      this.$store.commit({ type: 'setSort', sortBy: { key, dir } })
+    }
+
   },
   components: {
     AppHeader,
@@ -38,6 +40,6 @@ export default {
     Charts,
     SideNav
   },
-  
+
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <section class="table-container">
-    <TableHeader />
+    <TableHeader @sort="$emit('sort', $event)" />
     <DataList :entities="entities" />
     <TableSummary />
   </section>

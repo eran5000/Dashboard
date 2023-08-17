@@ -32,9 +32,10 @@ export const dataStore = {
         entities: []
     },
     getters: {
-        entities({entities}) {
+        entities({ entities }) {
             console.log(entities);
-            return entities },
+            return entities
+        },
     },
     mutations: {
         setDatas(state, { entities }) {
@@ -50,11 +51,17 @@ export const dataStore = {
         removeData(state, { dataId }) {
             state.entities = state.entities.filter(entity => entity._id !== dataId)
         },
-        addDataMsg(state, { dataId , msg}) {
+        addDataMsg(state, { dataId, msg }) {
             const entity = state.entities.find(entity => entity._id === dataId)
             if (!entity.msgs) entity.msgs = []
             entity.msgs.push(msg)
         },
+        setSort(state, { sortBy }) {
+            console.debug('♠️ ~ file: data.store.js:60 ~ setSort ~ sortBy:', sortBy)
+            this.entities.sort((a, b) => (a[sortBy.key] - b[sortBy.key]) * sortBy.dir)
+            console.log('this.entities:', this.entities)
+
+        }
     },
     actions: {
         async addData(context, { entity }) {
@@ -98,12 +105,18 @@ export const dataStore = {
         async addDataMsg(context, { dataId, txt }) {
             try {
                 const msg = await entityService.addDataMsg(dataId, txt)
-                context.commit({type: 'addDataMsg', dataId, msg })
+                context.commit({ type: 'addDataMsg', dataId, msg })
             } catch (err) {
                 console.log('dataStore: Error in addDataMsg', err)
                 throw err
             }
         },
+        // async sortEntities({ commit, dispatch }, { sortBy }) {
+        //     console.log('sortBy:', sortBy)
+        //     commit({ type: 'setSortBy', sortBy })
+        //     // dispatch('loadItems')
+
+        // }
 
     }
 }
