@@ -2,7 +2,7 @@
   <AppHeader />
   <SideNav/>
   <section class="content-container">
-    <Charts />
+    <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]" :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']"/>
     <DataTable :entities="entities"/>
   </section>
 
