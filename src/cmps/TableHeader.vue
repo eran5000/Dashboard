@@ -1,7 +1,7 @@
 <template>
   <section class="table-header grid">
     <div class="header-item" v-for="header in headers" :key="header.title" @click="sortBy(header.sortKey)">
-      <span v-if="header.sortable" :class="['table-header item icon', header.dir === 1 ? 'acc' : 'des']">
+      <span v-if="header.sortable" :class="['table-header item icon', header.dir === 1 ? 'asc' : 'des']">
         <i class="fas fa-sort-up"></i>
         <i class="fas fa-sort-down"></i>
       </span>
@@ -12,6 +12,7 @@
 <script>
 export default {
   name: 'TableHeader',
+  emits: ['sort'],
   data() {
     return {
       headers: [
@@ -64,10 +65,12 @@ export default {
   },
   methods: {
     sortBy(sortKey) {
+      console.debug('♠️ ~ file: TableHeader.vue:68 ~ sortBy ~ sortKey:', sortKey)
       const header = this.headers.find(header => header.sortKey === sortKey)
       if (!header.sortable) return
       header.dir = header.dir * -1
-      this.$emit('sort', sortKey, header.dir)
+
+      this.$emit('sort', { key: sortKey, dir: header.dir })
     }
   },
 
