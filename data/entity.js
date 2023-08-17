@@ -60,7 +60,7 @@ export const entity = [
     "alerts": 35
   },
   {
-    "date": 1679311932000,
+    "date": 1679223910000,
     "payment": 10016.0,
     "searches": 332,
     "rpm": 33.1,

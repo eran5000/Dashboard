@@ -1,26 +1,24 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/links';
+@import 'basics/forms';
 
 // Components
-@import "cmps/AppHeader";
-@import "cmps/AppFilter";
-@import "cmps/UserModal";
-@import "cmps/DataList.scss";
-@import "cmps/DataPreview.scss";
-@import "cmps/Charts.scss";
-
-// Views 
-@import "views/Dashboard";
-
-
-
+@import 'cmps/AppHeader';
+@import 'cmps/AppFilter';
+@import 'cmps/UserModal';
+@import 'cmps/DataList.scss';
+@import 'cmps/DataPreview.scss';
+@import 'cmps/Charts.scss';
+@import 'cmps/SideNav.scss';
+@import 'cmps/DataTable.scss';
+// Views
+@import 'views/Dashboard';
