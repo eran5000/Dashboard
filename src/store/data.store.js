@@ -32,7 +32,9 @@ export const dataStore = {
         entities: []
     },
     getters: {
-        entities({entities}) { return entities },
+        entities({entities}) {
+            console.log(entities);
+            return entities },
     },
     mutations: {
         setDatas(state, { entities }) {

@@ -2,7 +2,8 @@
   <AppHeader />
   <SideNav/>
   <section class="container home text-center">
-    <DataList />
+    <Charts />
+    <DataTable :entities="entities"/>
   </section>
 
   
@@ -10,7 +11,7 @@
 
 <script>
 import AppHeader from '../cmps/AppHeader.vue';
-import DataList from '../cmps/DataList.vue';
+import DataTable from '../cmps/DataTable.vue';
 import Charts from '../cmps/Charts.vue';
 import SideNav from '../cmps/SideNav.vue';
 
@@ -20,17 +21,20 @@ export default {
     return {
     }
   },
-  computed: {
-  },
   created() {
     this.$store.dispatch({type: 'loadEntities'})
+  },
+  computed: {
+    entities() {
+      return this.$store.getters.entities
+    }
   },
   methods: {
     
   },
   components: {
     AppHeader,
-    DataList,
+    DataTable,
     Charts,
     SideNav
   },
