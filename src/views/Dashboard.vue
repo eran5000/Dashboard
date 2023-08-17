@@ -1,7 +1,7 @@
 <template>
   <AppHeader />
   <SideNav/>
-  <section class="container home text-center">
+  <section class="content-container">
     <Charts />
     <DataTable :entities="entities"/>
   </section>
