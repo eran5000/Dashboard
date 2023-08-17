@@ -65,11 +65,9 @@ export default {
   },
   methods: {
     sortBy(sortKey) {
-      console.debug('♠️ ~ file: TableHeader.vue:68 ~ sortBy ~ sortKey:', sortKey)
       const header = this.headers.find(header => header.sortKey === sortKey)
       if (!header.sortable) return
       header.dir = header.dir * -1
-
       this.$emit('sort', { key: sortKey, dir: header.dir })
     }
   },

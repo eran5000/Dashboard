@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     sortEntities({ key, dir }) {
-      console.debug('♠️ ~ file: Dashboard.vue:32 ~ sortEntities ~ sortKey, dir:', key, dir)
       this.$store.commit({ type: 'setSort', sortBy: { key, dir } })
     }
 
