@@ -1,6 +1,13 @@
 <template>
-    <section class="dashboard-preview">
+    <section class="data-preview">
         <p>{{ date }}</p>
+        <p>{{ payment }}</p>
+        <p>{{ entity.searches }} K</p>
+        <p>{{ rpm }}</p>
+        <p>{{ entity.valid }}%</p>
+        <p>{{ entity.quality }}%</p>
+        <p>{{ entity.cap }}%</p>
+        <p>{{ entity.alerts }}</p>
     </section>
 </template>
 <script>
@@ -12,7 +19,13 @@ props: {
 computed: {
     date() {
         return new Date(this.entity.date).toLocaleDateString("es-CL")
-    }
+    },
+    payment() {
+        return this.entity.payment.toLocaleString("en-US", {style:"currency", currency:"USD"});
+    },
+    rpm() {
+        return this.entity.rpm.toLocaleString("en-US", {style:"currency", currency:"USD"});
+    },
 }
 }
 </script>
