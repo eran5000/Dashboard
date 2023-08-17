@@ -1,37 +1,39 @@
 <template>
-    <section class="data-preview table-grid">
-        <!-- <p v-for="col in colOrder">{{ col }}</p> -->
-        <p>{{ date }}</p>
-        <p>{{ payment }}</p>
-        <p>{{ entity.searches }} K</p>
-        <p>{{ rpm }}</p>
-        <p>{{ entity.valid }}%</p>
-        <p>{{ entity.quality }}%</p>
-        <p>{{ entity.cap }}%</p>
-        <p>{{ entity.alerts }}</p>
-    </section>
+  <section class="data-preview table-grid">
+    <p v-for="col in colOrder">{{ formattedEntity(col) }}</p>
+  </section>
 </template>
 <script>
 export default {
-name: 'DataPreview',
-props: {
-    entity: {type: Object}
-},
-data() {
+  name: 'DataPreview',
+  props: {
+    entity: { type: Object },
+  },
+  data() {
     return {
-        // colOrder: [date, payment]
+      colOrder: Object.keys(this.entity),
     }
-},
-computed: {
-    date() {
-        return new Date(this.entity.date).toLocaleDateString("es-CL")
+  },
+  methods: {
+    formattedEntity(type) {
+      switch (type) {
+        case 'date':
+          return new Date(this.entity.date).toLocaleDateString('es-CL')
+        case 'payment':
+        case 'rpm':
+          return this.entity[type].toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          })
+        case 'searches':
+          return `${this.entity.searches} K`
+        case 'cap':
+        case 'quality':
+          return `${this.entity[type]} %`
+        default:
+          return this.entity[type]
+      }
     },
-    payment() {
-        return this.entity.payment.toLocaleString("en-US", {style:"currency", currency:"USD"});
-    },
-    rpm() {
-        return this.entity.rpm.toLocaleString("en-US", {style:"currency", currency:"USD"});
-    },
-}
+  },
 }
 </script>

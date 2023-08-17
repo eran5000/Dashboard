@@ -48,15 +48,15 @@ export default {
           dir: 1
         },
         {
-          title: '% CAP',
-          sortable: true,
-          sortKey: 'cap',
-          dir: 1
-        },
-        {
           title: 'Quality',
           sortable: true,
           sortKey: 'quality',
+          dir: 1
+        },
+        {
+          title: '% CAP',
+          sortable: true,
+          sortKey: 'cap',
           dir: 1
         },
         {
