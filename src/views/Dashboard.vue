@@ -2,6 +2,7 @@
   <AppHeader />
   <SideNav/>
   <section class="container home text-center">
+    <Charts />
     <DataList />
   </section>
 
