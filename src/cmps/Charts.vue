@@ -35,33 +35,20 @@ export default {
                     {
                         label: 'none',
                         backgroundColor: '#f87979',
-                        data: [40, 39, 10, 40, 39, 80, 40]
+                        data: [40, 39, 10, 40, 39, 80, 40],
+                        datalabels: {
+                            display: true, // Display labels on data points
+                        },
                     }
                 ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                fill: true,
                 plugins: {
                     legend: {
-                        display: false
-                    },
-                    tooltips: {
-                    enabled: true, // Enable tooltips
-                    callbacks: {
-                        label: (tooltipItem, data) => {
-                            console.log(tooltipItem)
-                            const dataset = data.datasets[tooltipItem.datasetIndex]
-                            const currentValue = dataset.data[tooltipItem.index]
-                            return currentValue.toString()
-                        }
-                    }
-                }
-                },
-                elements: {
-                    point: {
-                        pointStyle: 'line',
-                        radius: 0, // Set the radius to 0 to hide dots
+                        display: false,
                     }
                 }
             }
