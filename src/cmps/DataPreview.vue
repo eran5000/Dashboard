@@ -1,5 +1,6 @@
 <template>
     <section class="data-preview table-grid">
+        <!-- <p v-for="col in colOrder">{{ col }}</p> -->
         <p>{{ date }}</p>
         <p>{{ payment }}</p>
         <p>{{ entity.searches }} K</p>
@@ -15,6 +16,11 @@ export default {
 name: 'DataPreview',
 props: {
     entity: {type: Object}
+},
+data() {
+    return {
+        // colOrder: [date, payment]
+    }
 },
 computed: {
     date() {

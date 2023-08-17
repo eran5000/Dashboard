@@ -1,9 +1,10 @@
 .data-preview {
   border-bottom: 0.5px solid #b5bbbd;
+  // text-align: left;
   &:hover {
     background-color: #efefef;
   }
   p {
-    padding-inline-start: 20px;
+    // padding-inline-start: 20px;
   }
 }
