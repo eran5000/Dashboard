@@ -1,7 +1,6 @@
 <template>
     <section class="dashboard-list">
-        <!-- <DataPreview v-for="entity in entities" :key="entity.date"/> -->
-        <pre>{{ entities }}</pre>
+        <DataPreview v-for="entity in entities" :key="entity.date" :entity="entity"/>
     </section>
 </template>
 <script>
