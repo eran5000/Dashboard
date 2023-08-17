@@ -2,7 +2,9 @@
   <section class="side-nav">
     <div class="icons-container">
       <div class="icon-wrapper">
-        <i class="fa-solid fa-cube active"></i>
+        <!-- <i class="fa-solid fa-cube active"></i> -->
+        <img src="https://res.cloudinary.com/oxyhertz/image/upload/v1692279252/FirstOffer-rev2.1_gbgywf.png" width="25"
+          height="25" alt="">
       </div>
       <div class="icon-wrapper">
         <i class="fa-solid fa-chart-simple"></i>

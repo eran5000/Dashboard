@@ -1,10 +1,13 @@
 <template>
-  <AppHeader />
   <SideNav />
-  <section class="content-container">
-    <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]" :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']"/>
-    <DataTable @sort="sortEntities" :entities="entities" />
-  </section>
+  <main class="main-content">
+    <AppHeader />
+    <section class="content-container">
+      <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]"
+        :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']" />
+      <DataTable @sort="sortEntities" :entities="entities" />
+    </section>
+  </main>
 </template>
 
 <script>
