@@ -1,0 +1,36 @@
+.side-nav {
+  grid-area: side;
+  background-color: $sidenav-primary;
+  display: flex;
+  flex-direction: column;
+
+  .icons-container {
+    flex: 1;
+  }
+
+  .active {
+    border-radius: 50%;
+    border: 2px solid #819d5a;
+    padding: 5px;
+  }
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    cursor: pointer;
+    &:hover {
+      background-color: #333331;
+    }
+    i {
+      color: $icon-primary;
+    }
+  }
+
+  .forward-arrow {
+    background-color: #333331;
+    i {
+      color: #59666c;
+    }
+  }
+}
