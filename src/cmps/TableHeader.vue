@@ -80,24 +80,3 @@ export default {
 
 }
 </script>
-<style lang="scss">
-.table-header {
-  font-weight: 600;
-  font-size: 0.8rem;
-  display: grid;
-  grid-auto-flow: column;
-}
-
-.header-item {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min-content 1fr;
-  gap: 0.5rem;
-}
-
-.table-header.icon {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-rows: min-content;
-}
-</style>

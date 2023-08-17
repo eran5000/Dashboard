@@ -1,8 +1,43 @@
 .table-container{
   background-color: #fff;
   border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-summary {
+padding-block-start: 10px;
+font-family: montserrat-medium;
 }
 
 .table-header {
-  justify-items: center;
+  border-bottom: 0.5px solid #b5bbbd;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.header-item {
+  font-family: montserrat-medium;
+  padding-block-end: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content 1fr;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.item {
+  color: #b5b5b5;
+}
+.table-header.icon {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: min-content;
+}
+
+span {
+  display: flex;
+  align-items: center;
 }

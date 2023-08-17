@@ -1,4 +1,13 @@
 .charts{
     background-color: #fff;
     width: 20%;
+    border: 0.5px solid #d5d8d9;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.charts-container{
+    display: flex;
+    justify-content: space-between;
+    margin-block: 20px;
 }
