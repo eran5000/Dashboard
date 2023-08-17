@@ -1,10 +1,9 @@
 <template>
-  <section class="table-summary">
+  <section class="table-summary table-grid">
     <!-- <div v-for="summary in summaryData"></div> -->
     <div v-for="(value, key, index) in summaryData">
       <template v-if="key !== 'date'">
         <div>
-          {{ key }}:
           {{ isAvg(key) ? value.avg.toFixed(2) + '%' : value.total.toFixed(2) }}
         </div>
       </template>
