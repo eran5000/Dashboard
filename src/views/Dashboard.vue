@@ -3,15 +3,11 @@
   <main class="main-content">
     <AppHeader />
     <section class="content-container">
-      <section class="charts-container">
-        <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]"
-          :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']" />
-        <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]"
-          :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']" />
-        <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]"
-          :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']" />
-        <Charts label="RPM" :dataSet="[40, 50, 60, 40, 100, 80, 40]"
-          :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']" />
+      <section class="charts-container" v-if="chartsData">
+        <Charts label="Payments" :dataSet="[1857, 716, 9048, 6443, 5782]" :labels="chartsData.dates" />
+        <Charts label="Searches" :dataSet="[57, 46, 340, 210, 330]" :labels="chartsData.dates" />
+        <Charts label="RPM" :dataSet="[34, 17, 29, 33, 20]" :labels="chartsData.dates" />
+        <Charts label="Alerts" :dataSet="[112, 587, 144, 372, 1968]" :labels="chartsData.dates" />
       </section>
       <DataTable @sort="sortEntities" :entities="entities" />
     </section>
@@ -30,12 +26,19 @@ export default {
     return {
     }
   },
-  created() {
-    this.$store.dispatch({ type: 'loadEntities' })
+  async created() {
+    await this.$store.dispatch({ type: 'loadEntities' })
+    this.$store.commit({ type: 'setChartsData' })
   },
   computed: {
     entities() {
       return this.$store.getters.entities
+    },
+    chartsData() {
+      return this.$store.getters.chartsData
+    },
+    RPM() {
+      return this.$store.getters.RPM
     }
   },
   methods: {

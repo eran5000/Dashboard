@@ -1,6 +1,9 @@
 <template>
-    <section class="charts" v-if="data.labels">
-        <Line :data="data" :options="options" />
+    <section class="flex column">
+        <p>{{ label }}</p>
+        <section class="charts" v-if="data.labels">
+            <Line :data="data" :options="options" />
+        </section>
     </section>
 </template>
 <script>
@@ -66,11 +69,11 @@ export default {
 
                 },
                 scales: {
-                    display: true,
                     y: {
                         ticks: {
-                            callback: function (value, index, ticks) {
-                                return '$' + value;
+                            callback: function (value) {
+                                const newVal = value > 999 ? value/1000 + 'k' : value
+                                return '$' + newVal;
                             }
                         }
                     }
