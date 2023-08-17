@@ -1,5 +1,5 @@
 <template>
-  <section class="table-header grid">
+  <section class="table-header table-grid">
     <div class="header-item" v-for="header in headers" :key="header.title" @click="sortBy(header.sortKey)">
       <span v-if="header.sortable" :class="['table-header item icon', header.dir === 1 ? 'asc' : 'des']">
         <i class="fas fa-sort-up"></i>
@@ -51,6 +51,12 @@ export default {
           title: '% CAP',
           sortable: true,
           sortKey: 'cap',
+          dir: 1
+        },
+        {
+          title: 'Quality',
+          sortable: true,
+          sortKey: 'quality',
           dir: 1
         },
         {

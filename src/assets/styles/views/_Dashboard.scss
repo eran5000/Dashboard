@@ -1,19 +1,15 @@
-.main-layout{
+.main-layout {
   height: 100vh;
   display: grid;
-  grid-template-columns: 30px 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: 50px 1fr;
-  grid-template-areas: "side header"
-  "side main";
+  grid-template-areas:
+    'side header'
+    'side main';
   background-color: #e4e5e7;
 }
 
-.app-header{
+.app-header {
   grid-area: header;
   display: flex;
-}
-
-.side-nav{
-  grid-area: side;
-  background-color: #404040;
 }
