@@ -29,13 +29,21 @@ export function getActionAddDataMsg(dataId) {
 
 export const dataStore = {
     state: {
-        entities: []
+        entities: [],
+        dates: [],
+        payments: [],
+        searches: [],
+        rpm: [],
+        alerts: []
     },
     getters: {
         entities({ entities }) {
             console.log(entities);
             return entities
         },
+        chartsData({dates, payments, searches, rpm, alerts}) {
+            return {dates, payments, searches, rpm, alerts}
+        }
     },
     mutations: {
         setDatas(state, { entities }) {
@@ -62,6 +70,18 @@ export const dataStore = {
             state.entities.sort((a, b) => (a[sortBy.key] - b[sortBy.key]) * sortBy.dir)
             console.log('state.entities:', state.entities)
 
+        },
+        setChartsData({entities, dates, payments, searches, rpm, alerts}) {
+            entities.map((entity,idx) => {
+                if (idx < 5) {
+                    dates.push(new Date (entity.date).toLocaleDateString("es-CL").slice(0,5))
+                    payments.push( Math.floor(entity.payment))
+                    searches.push(Math.floor(entity.searches))
+                    rpm.push(Math.floor(entity.rpm))
+                    alerts.push(entity.alerts)
+                }
+            })
+            console.log(dates, payments, searches, rpm, alerts)
         }
     },
     actions: {

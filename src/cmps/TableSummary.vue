@@ -1,8 +1,8 @@
 <template>
   <section class="table-summary table-grid">
-    <!-- <div v-for="summary in summaryData"></div> -->
     <div v-for="(value, key, index) in summaryData">
-      <template v-if="key !== 'date'">
+      <template v-if="key == 'date'">Total</template>
+      <template v-else>
         <div>
           {{ isAvg(key) ? value.avg.toFixed(2) + '%' : value.total.toFixed(2) }}
         </div>
@@ -17,16 +17,16 @@ export default {
     summaryData: { type: Object },
   },
   Date() {
-    return {
-
-    }
+    return {}
+  },
+  created() {
+console.log(this.summaryData);
   },
   methods: {
     isAvg(key) {
-      const isAvgs = ['quality', 'valid', 'cap'];
-      return isAvgs.includes(key);
-    }
+      const isAvgs = ['quality', 'valid', 'cap']
+      return isAvgs.includes(key)
+    },
   },
-
 }
 </script>
