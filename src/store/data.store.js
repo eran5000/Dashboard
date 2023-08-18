@@ -57,7 +57,10 @@ export const dataStore = {
             entity.msgs.push(msg)
         },
         setSort(state, { sortBy }) {
+            console.debug('♠️ ~ file: data.store.js:60 ~ setSort ~ sortBy:', sortBy)
+
             state.entities.sort((a, b) => (a[sortBy.key] - b[sortBy.key]) * sortBy.dir)
+            console.log('state.entities:', state.entities)
 
         }
     },
