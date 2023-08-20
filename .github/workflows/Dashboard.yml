@@ -25,7 +25,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: '/Dashboard/'
+      url: ${{ steps.change-page-url.outputs.new_page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
