@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.data-list{
+  overflow-y: scroll;
+}
+
 .table-summary {
 padding-block-start: 10px;
 font-family: montserrat-medium;

@@ -1,5 +1,5 @@
 <template>
-    <section class="dashboard-list">
+    <section class="data-list">
         <DataPreview v-for="entity in entities" :key="entity.date" :entity="entity"/>
     </section>
 </template>
