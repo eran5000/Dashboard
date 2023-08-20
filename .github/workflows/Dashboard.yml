@@ -25,7 +25,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.change-page-url.outputs.new_page_url }}
+      url: 'eran5000.github.io/Dashboard/'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
