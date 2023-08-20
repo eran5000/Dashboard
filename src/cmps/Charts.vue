@@ -54,7 +54,7 @@ export default {
                     tooltip: {
                         displayColors: false,
                         callbacks: {
-                            label: function (context) {
+                            label: this.label !== 'Searches'? function (context) {
                                 let label = context.dataset.label || '';
 
                                 if (label) {
@@ -62,6 +62,17 @@ export default {
                                 }
                                 if (context.parsed.y !== null) {
                                     label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                                return label;
+                            } :
+                            function (context) {
+                                let label = context.dataset.label || '';
+
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + 'k';
                                 }
                                 return label;
                             }
@@ -72,10 +83,13 @@ export default {
                 scales: {
                     y: {
                         ticks: {
-                            callback: function (value) {
+                            callback: this.label !== 'Searches'? function (value) {
                                 const newVal = value > 999 ? value/1000 + 'k' : value
-                                return '$' + newVal;
-                            }
+                                return '$' + newVal
+                            } : function (value) {
+                                const newVal = value > 999 ? value/1000 + 'k' : value
+                                return newVal + 'k'
+                            } 
                         }
                     }
                 }
