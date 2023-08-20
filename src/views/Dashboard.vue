@@ -4,10 +4,7 @@
     <AppHeader />
     <section class="content-container">
       <section class="charts-container" v-if="chartsData">
-        <Charts label="Payments" :dataSet="[1857, 716, 9048, 6443, 5782]" :labels="['25-03','24-03', '23-03', '22-03', '21-03']" />
-        <Charts label="Searches" :dataSet="[57, 46, 340, 210, 330]" :labels="['25-03','24-03', '23-03', '22-03', '21-03']" />
-        <Charts label="RPM" :dataSet="[34, 17, 29, 33, 20]" :labels="['25-03','24-03', '23-03', '22-03', '21-03']" />
-        <Charts label="Alerts" :dataSet="[112, 587, 144, 372, 1968]" :labels="['25-03','24-03', '23-03', '22-03', '21-03']" />
+        <Charts v-for="data, idx in chartData" :key="idx" :dataSet="data.dataSet" :labels="data.labels" />
       </section>
       <DataTable @sort="sortEntities" :entities="entities" />
     </section>
@@ -24,6 +21,12 @@ export default {
   name: 'Dashboard',
   data() {
     return {
+      chartData: [
+        { dataSet: [1857, 716, 9048, 6443, 5782], labels: ['25-03', '24-03', '23-03', '22-03', '21-03'] },
+        { dataSet: [57, 46, 340, 210, 330], labels: ['25-03', '24-03', '23-03', '22-03', '21-03'] },
+        { dataSet: [112, 587, 144, 372, 1968], labels: ['25-03', '24-03', '23-03', '22-03', '21-03'] },
+        { dataSet: [34, 17, 29, 33, 20], labels: ['25-03', '24-03', '23-03', '22-03', '21-03'] },
+      ]
     }
   },
   async created() {

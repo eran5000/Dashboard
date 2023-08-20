@@ -1,6 +1,6 @@
 <template>
   <section class="table-summary table-grid">
-    <div v-for="(value, key, index) in summaryData">
+    <div v-for="(value, key) in summaryData" :key="key">
       <template v-if="key == 'date'">Total</template>
       <template v-else>
         <div>
@@ -18,9 +18,6 @@ export default {
   },
   Date() {
     return {}
-  },
-  created() {
-console.log(this.summaryData);
   },
   methods: {
     isAvg(key) {
