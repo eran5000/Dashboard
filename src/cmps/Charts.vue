@@ -34,7 +34,8 @@ export default {
                         borderColor: '#66b2b2',
                         data: [],
                         fill: true,
-                        fillColor: 'rgba(0, 0, 255, 0.2)'
+                        fillColor: 'rgba(0, 0, 255, 0.2)',
+                        tension: 0.5
                     }
                 ]
             },
